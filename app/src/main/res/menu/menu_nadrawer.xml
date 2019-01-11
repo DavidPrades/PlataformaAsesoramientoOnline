@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/sobreMi"
+            android:icon="@drawable/ic_person"
+            android:title="Sobre Mi" />
+        <item
+            android:id="@+id/entrenamientos"
+            android:icon="@drawable/ic_pesa"
+            android:title="Entrenamientos" />
+        <item
+            android:id="@+id/transformaciones"
+            android:icon="@drawable/ic_transofrmaciones"
+            android:title="Transformaciones" />
+        <item
+            android:id="@+id/contacto"
+            android:icon="@drawable/ic_contacto"
+            android:title="Contacto" />
+    </group>
+
+</menu>
