@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         final NavigationView navView = (NavigationView) findViewById(R.id.navview);
 
         final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
-        //El listener realiza una pequeña animación sobre el icono al cerrar el navegador
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -53,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (menuItem.getItemId()) {
                     case R.id.sobreMi:
+                        fragment = new FragmentSobreMi();
+                        fragmentTransaction = true;
                         toolbar.setTitle(menuItem.getTitle());
 
                         break;
@@ -76,13 +77,17 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                     menuItem.setChecked(true);
                     getSupportActionBar().setTitle(menuItem.getTitle());
+
                 }
+
                 drawerLayout.closeDrawers();
                 return true;
 
             }
         });
+
     }
+
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

@@ -85,11 +85,7 @@ public class ImageAdapter extends  RecyclerView.Adapter<ImageAdapter.TarjViewHol
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-           // menu.add(0, 0, getAdapterPosition(), "Editar");     //groupId, itemId, order, title
 
-            //menu.add(0, 1, getAdapterPosition(), "Eliminar");
-
-            //menu.add(0, 2, getAdapterPosition(), "Compartir");
         }
     }
 
