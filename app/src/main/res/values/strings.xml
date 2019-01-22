@@ -6,4 +6,7 @@
     <string name="introduccion"> <b>Una vida dedicada al deporte</b> que no puedo contemplar de otra manera, <b>nuestro cuerpo</b> es lo único que tendremos hasta el último día, <b>debemos cuidarlo</b>. Esto va mucho más lejos, no se trata solo de entrenar y tener experiencia, si no de tratar de comprender que sucede en nuestro cuerpo <b>para saber cómo planificar un entrenamiento.</b></string>
     <string name="titulo2">Mis logros</string>
     <string name="logros">Para ello estudié la carrera en <b>Ciencias de la Actividad Física y el Deporte</b>durante 4 años y también me formé por <b>NSCA-CPT</b> como entrenador personal.  Siempre fui muy competitivo. En 2017 <b><font color="red">decidí competir en men’s physique</font></b> junior consiguiendo un <b>primer puesto en IFBB interterritorial y segundo en el campeonato regional</b> de la Región de Murcia. En 2018 he competido en mi primer internacional.  Ahora pretendo <b><font color="red">ayudar al máximo numero de personas, a conseguir su sueño de lograr un mejor físico</font></b> con estos planes tras años de estudio y experiencia, ya que las asesorías personales están completas y quiero seguir ayudandos.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

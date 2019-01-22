@@ -26,8 +26,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Fragment fragment1= new FragmentSobreMi();
+
         setSupportActionBar(toolbar);
 
+
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment1).commit();
 
 
         final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -50,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean fragmentTransaction = false;
                 Fragment fragment = null;
+                menuItem.setChecked(true);
                 switch (menuItem.getItemId()) {
                     case R.id.sobreMi:
                         fragment = new FragmentSobreMi();
@@ -69,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.contacto:
                         toolbar.setTitle(menuItem.getTitle());
+                        fragment = new ContactFragment();
+
+                        fragmentTransaction = true;
                         break;
 
                 }

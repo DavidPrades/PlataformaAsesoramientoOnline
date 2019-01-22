@@ -20,6 +20,7 @@ public class FragmentSobreMi extends Fragment implements View.OnClickListener {
     public Button buttonInstagram;
     public Button buttonTwitter;
     public Button buttonFacebook;
+
     public FragmentSobreMi() {
         // Required empty public constructor
 
@@ -42,15 +43,33 @@ public class FragmentSobreMi extends Fragment implements View.OnClickListener {
         buttonFacebook.setBackground(getResources().getDrawable(R.drawable.facebook));
 
         buttonYoutube.setOnClickListener(this);
-
+        buttonInstagram.setOnClickListener(this);
+        buttonTwitter.setOnClickListener(this);
+        buttonFacebook.setOnClickListener(this);
         return rootView;
     }
 
 
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCnpCOBcIaj_zAhl19j2ex7Q"));
-        startActivity(i);
+        switch (v.getId()) {
+            case R.id.buttonYoutube:
+                Intent youtube = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCnpCOBcIaj_zAhl19j2ex7Q"));
+                startActivity(youtube);
+                break;
+            case R.id.buttonFacebook:
+                Intent facebook = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/TheTitanWeb/"));
+                startActivity(facebook);
+                break;
+            case R.id.buttonInstagram:
+                Intent instagram = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/thetitanfit/"));
+                startActivity(instagram);
+                break;
+            case R.id.buttonTwitter:
+                Intent twitter = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("https://twitter.com/thetitanfit"));
+                startActivity(twitter);
+                break;
+        }
     }
 
 }
