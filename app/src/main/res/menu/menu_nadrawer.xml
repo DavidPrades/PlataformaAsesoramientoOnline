@@ -7,7 +7,8 @@
         <item
             android:id="@+id/sobreMi"
             android:icon="@drawable/ic_person"
-            android:title="Sobre Mi" />
+            android:title="Sobre Mi"
+            />
         <item
             android:id="@+id/entrenamientos"
             android:icon="@drawable/ic_pesa"

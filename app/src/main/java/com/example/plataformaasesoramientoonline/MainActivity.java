@@ -2,8 +2,10 @@ package com.example.plataformaasesoramientoonline;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -21,15 +23,18 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Color color;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(color.RED);
+        }
         Fragment fragment1= new FragmentSobreMi();
 
         setSupportActionBar(toolbar);
-
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment1).commit();
@@ -37,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         final NavigationView navView = (NavigationView) findViewById(R.id.navview);
-
+        navView.setCheckedItem(R.id.sobreMi);
         final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -56,16 +61,17 @@ public class MainActivity extends AppCompatActivity {
                 boolean fragmentTransaction = false;
                 Fragment fragment = null;
                 menuItem.setChecked(true);
+
                 switch (menuItem.getItemId()) {
                     case R.id.sobreMi:
                         fragment = new FragmentSobreMi();
                         fragmentTransaction = true;
                         toolbar.setTitle(menuItem.getTitle());
-
                         break;
                     case R.id.entrenamientos:
                         toolbar.setTitle(menuItem.getTitle());
-
+                        fragment = new FragmentEntrenamientos();
+                        fragmentTransaction = true;
                         break;
                     case R.id.transformaciones:
                         toolbar.setTitle(menuItem.getTitle());
@@ -76,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.contacto:
                         toolbar.setTitle(menuItem.getTitle());
                         fragment = new ContactFragment();
-
                         fragmentTransaction = true;
                         break;
 
@@ -96,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

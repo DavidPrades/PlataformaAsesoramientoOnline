@@ -52,7 +52,7 @@ public class ContactFragment extends Fragment implements View.OnClickListener {
 
     public void sendEmail(){
         Intent i = new Intent(Intent.ACTION_SEND);
-       i.setType("message/rfc822");
+        i.setType("message/rfc822");
         i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"thetitanfit@example.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, ""+spinner.getSelectedItem());
         i.putExtra(Intent.EXTRA_TEXT   , editText.getText());

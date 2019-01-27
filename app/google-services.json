@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "508704891227",
+    "firebase_url": "https://plataformaonline-e7b1e.firebaseio.com",
+    "project_id": "plataformaonline-e7b1e",
+    "storage_bucket": "plataformaonline-e7b1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508704891227:android:7c848bea93ce1b92",
+        "android_client_info": {
+          "package_name": "com.example.plataformaasesoramientoonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508704891227-js6so0cbd8b2otjhiigt6vk9s7f80m9c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.plataformaasesoramientoonline",
+            "certificate_hash": "14e2b27c7146e4e92f1a768bfff085bb87589edc"
+          }
+        },
+        {
+          "client_id": "508704891227-qqs6442klrs96p28n3br437nhn61p9vu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXBSrqjVOzk_mxcJFMv9ErMYjnh87aO1c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508704891227-qqs6442klrs96p28n3br437nhn61p9vu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
