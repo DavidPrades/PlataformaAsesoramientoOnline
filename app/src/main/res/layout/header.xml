@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewHeader"
         android:paddingTop="16dp"
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -21,6 +21,7 @@
 
 
     <TextView
+        android:id="@+id/textViewNameHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="nav_header_title"
@@ -28,7 +29,7 @@
         android:textColor="@color/textColor" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewEmailHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"

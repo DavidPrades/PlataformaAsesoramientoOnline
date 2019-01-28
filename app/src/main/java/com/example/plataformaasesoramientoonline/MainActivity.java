@@ -1,11 +1,14 @@
 package com.example.plataformaasesoramientoonline;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -20,15 +23,25 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     private Color color;
+    private TextView email, name;
+    private FloatingActionButton fab;
+    private static final String TAG = "FireBaseDavid";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(color.RED);
         }
@@ -40,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment1).commit();
 
 
+        email = findViewById(R.id.textViewEmailHeader);
+        name = findViewById(R.id.textViewNameHeader);
+        fab = findViewById(R.id.exit);
+
+
+
         final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         final NavigationView navView = (NavigationView) findViewById(R.id.navview);
         navView.setCheckedItem(R.id.sobreMi);
@@ -48,11 +67,12 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         View header = navView.getHeaderView(0);
-        final ImageView circular_avatar = header.findViewById(R.id.imageView);
+        final ImageView circular_avatar = header.findViewById(R.id.imageViewHeader);
         Bitmap bm = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.tytyy);
         RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(this.getResources(), bm);
         drawable.setCircular(true);
         circular_avatar.setImageDrawable(drawable);
+
 
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -101,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

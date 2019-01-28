@@ -7,7 +7,7 @@
     android:background="@color/colorPrimary"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".MainActivityPrincipal">
+    tools:context=".SingIn">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -62,57 +62,43 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/sign_up_button"
+        <Button
+                android:id="@+id/buttonSingIn"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
                 android:background="@color/colorAccent"
-                android:text="Sing Up"
+                android:text="Sing In"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/buttonSingIn"
-                android:text="Sing In"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorAccent"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_reset_password"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@null"
-            android:text="forgot_password"
-            android:textAllCaps="false"
-            android:textColor="@color/colorAccent" />
 
         <!-- Link to Login Screen -->
 
-        <Button
-            android:id="@+id/sign_in_button"
+
+        <TextView
+            android:id="@+id/editTextSingUp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@null"
-            android:text="forgot_password"
+            android:gravity="center"
+            android:text="Create a new count!"
             android:textAllCaps="false"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+        <Button
+            android:id="@+id/buttonSingUp"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
+            android:text="Sing Up"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ProgressBar
@@ -122,4 +108,16 @@
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="20dp"
         android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/emailBundle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/nameBundle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 </LinearLayout>
