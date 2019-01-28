@@ -34,7 +34,14 @@ public class MainActivity extends AppCompatActivity {
     private TextView email, name;
     private FloatingActionButton fab;
     private static final String TAG = "FireBaseDavid";
+    FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener mAuthListner;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListner);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +64,21 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.textViewNameHeader);
         fab = findViewById(R.id.exit);
 
-
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListner = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser()==null) {
+                    startActivity(new Intent(MainActivity.this, SingIn.class));
+                }
+            }
+        };
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+            }
+        });
 
         final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         final NavigationView navView = (NavigationView) findViewById(R.id.navview);

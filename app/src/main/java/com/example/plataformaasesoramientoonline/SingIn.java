@@ -38,11 +38,7 @@ public class SingIn extends AppCompatActivity {
     private TextView name;
     private TextView email;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListner);
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

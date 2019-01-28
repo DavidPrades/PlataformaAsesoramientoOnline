@@ -46,7 +46,7 @@ public class SingUp extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         passwordcheck = (EditText) findViewById(R.id.input_password);
         ahsignup = (Button) findViewById(R.id.btn_signup);
-        name_id= findViewById(R.id.input_name);
+        name_id= (EditText) findViewById(R.id.input_name);
         TextView btnSignUp = (TextView) findViewById(R.id.login_page);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -70,9 +70,18 @@ public class SingUp extends AppCompatActivity {
     private void singUp2() {
         String email = email_id.getText().toString();
         String password = passwordcheck.getText().toString();
+        String name = name_id.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
+
             Toast.makeText(getApplicationContext(), "Enter Eamil Id", Toast.LENGTH_SHORT).show();
+
+            return;
+        }
+        if (TextUtils.isEmpty(name)) {
+
+            Toast.makeText(getApplicationContext(), "Enter Name", Toast.LENGTH_SHORT).show();
+
             return;
         }
         if (TextUtils.isEmpty(password)) {
