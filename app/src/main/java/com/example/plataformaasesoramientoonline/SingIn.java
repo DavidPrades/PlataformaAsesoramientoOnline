@@ -72,14 +72,18 @@ public class SingIn extends AppCompatActivity {
             }
         });
 
-       /* Bundle extras = getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String nameBundle = extras.getString("Name");
-            Toast.makeText(getApplicationContext(), "Name"+nameBundle, Toast.LENGTH_SHORT).show();
-            String emailBundle = extras.getString("Email");
-            Toast.makeText(getApplicationContext(), "Email"+emailBundle, Toast.LENGTH_SHORT).show();
+            String value = extras.getString("Name");
+            Toast.makeText(getApplicationContext(), ""+value, Toast.LENGTH_SHORT).show();
+            Intent i1 = new Intent(this, MainActivity.class);
+            i1.putExtra("Name1",value);
+            Toast.makeText(getApplicationContext(), "Enviado", Toast.LENGTH_SHORT).show();
+            startActivity(i1);
         }
-        */
+
+
+
 
         buttonSingUp.setOnClickListener(new View.OnClickListener() {
             @Override

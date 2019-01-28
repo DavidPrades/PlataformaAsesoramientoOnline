@@ -65,12 +65,18 @@ public class SingUp extends AppCompatActivity {
             }
         });
 
+
+
+
     }
 
     private void singUp2() {
         String email = email_id.getText().toString();
         String password = passwordcheck.getText().toString();
         String name = name_id.getText().toString();
+
+
+
 
         if (TextUtils.isEmpty(email)) {
 
@@ -84,14 +90,18 @@ public class SingUp extends AppCompatActivity {
 
             return;
         }
+        Intent i1 = new Intent(this, MainActivity.class);
+        Intent i2 = new Intent(this, SingIn.class);
+        i1.putExtra("Name", name);
+        i2.putExtra("Name",name);
+        //i.putExtra("Email", email);
+        startActivity(i1);
+        startActivity(i2);
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Enter Password", Toast.LENGTH_SHORT).show();
             return;
         }
-      /*  Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        i.putExtra("Name", name.getText());
-        i.putExtra("Email", email_id.getText());
-        startActivity(i); */
+
         progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(SingUp.this, new OnCompleteListener<AuthResult>() {
@@ -113,6 +123,7 @@ public class SingUp extends AppCompatActivity {
                         }
                     }
                 });
+
     }
 
    /* private void singUp() {

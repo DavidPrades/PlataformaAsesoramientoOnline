@@ -56,12 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment1).commit();
 
-
-        email = findViewById(R.id.textViewEmailHeader);
-        name = findViewById(R.id.textViewNameHeader);
         fab = findViewById(R.id.exit);
 
         mAuth = FirebaseAuth.getInstance();
@@ -88,6 +84,17 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         View header = navView.getHeaderView(0);
+
+        TextView textViewNameHeader = header.findViewById(R.id.textViewNameHeader);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value1 = extras.getString("Name1");
+            String value = extras.getString("Name");
+            textViewNameHeader.setText(value1);
+            textViewNameHeader.setText(value);
+            Toast.makeText(getApplicationContext(), ""+value1, Toast.LENGTH_SHORT).show();
+        }
+
         final ImageView circular_avatar = header.findViewById(R.id.imageViewHeader);
         Bitmap bm = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.tytyy);
         RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(this.getResources(), bm);
