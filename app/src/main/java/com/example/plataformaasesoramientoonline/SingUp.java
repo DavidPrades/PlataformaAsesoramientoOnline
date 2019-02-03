@@ -1,10 +1,16 @@
 package com.example.plataformaasesoramientoonline;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -12,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,12 +33,16 @@ import java.util.regex.Pattern;
 
 
 public class SingUp extends AppCompatActivity {
+    private final static int SELECT_PHOTO = 12345;
     private EditText name_id, email_id, passwordcheck;
     private FirebaseAuth mAuth;
     private static final String TAG = "";
     private ProgressBar progressBar;
+    private Button btnSelectImagen;
     Button ahsignup;
     private Color color;
+    private ImageView imageSeleccion;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +59,9 @@ public class SingUp extends AppCompatActivity {
         ahsignup = (Button) findViewById(R.id.btn_signup);
         name_id= (EditText) findViewById(R.id.input_name);
         TextView btnSignUp = (TextView) findViewById(R.id.login_page);
+        btnSelectImagen = findViewById(R.id.selectImage);
 
+        imageSeleccion= null;
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,9 +78,12 @@ public class SingUp extends AppCompatActivity {
             }
         });
 
-
-
-
+        btnSelectImagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImage();
+            }
+        });
     }
 
     private void singUp2() {
@@ -75,19 +91,12 @@ public class SingUp extends AppCompatActivity {
         String password = passwordcheck.getText().toString();
         String name = name_id.getText().toString();
 
-
-
-
         if (TextUtils.isEmpty(email)) {
-
             Toast.makeText(getApplicationContext(), "Enter Eamil Id", Toast.LENGTH_SHORT).show();
-
             return;
         }
         if (TextUtils.isEmpty(name)) {
-
             Toast.makeText(getApplicationContext(), "Enter Name", Toast.LENGTH_SHORT).show();
-
             return;
         }
         Intent i1 = new Intent(this, MainActivity.class);
@@ -126,46 +135,55 @@ public class SingUp extends AppCompatActivity {
 
     }
 
-   /* private void singUp() {
-        EditText editTextEmail = findViewById(R.id.email);
-        EditText editTextPass = findViewById(R.id.password);
 
-        if (isEmailValid(editTextEmail.getText())  && editTextPass.length() >= 8){
-
-
-            mAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPass.getText().toString())
-                    .addOnCompleteListener(SingUp.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "createUserWithEmail:success");
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                finish();
-                            } else {
-
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(SingUp.this, task.getException().getLocalizedMessage(),
-                                        Toast.LENGTH_SHORT).show();
-
-                            }
-
-                        }
-                    });
-        }else{
-            Toast.makeText(getApplicationContext(), "Email or password wrong",
-                    Toast.LENGTH_LONG).show();
-        }
-
-    } */
-
-    public static boolean isEmailValid(Editable email) {
+   /* public static boolean isEmailValid(Editable email) {
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }*/
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case SELECT_PHOTO: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Toast.makeText(this, "Imagen seleccionada con exito", Toast.LENGTH_SHORT).show();
+                    selectImage();
+                } else {
+
+
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
+
+    public void selectImage(){
+
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+
+            startActivityForResult(pickPhoto , SELECT_PHOTO);
+        }else{
+            Toast.makeText(SingUp.this, "You don't have permission", Toast.LENGTH_SHORT).show();
+            ActivityCompat.requestPermissions(SingUp.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    SELECT_PHOTO);
+        }
+
+    }
+
+
+
+
 
 
 }

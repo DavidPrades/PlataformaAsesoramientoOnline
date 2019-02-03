@@ -7,20 +7,24 @@
         <item
             android:id="@+id/sobreMi"
             android:icon="@drawable/ic_person"
-            android:title="Sobre Mi"
+            android:title="About me"
             />
         <item
-            android:id="@+id/entrenamientos"
+            android:id="@+id/coaching"
             android:icon="@drawable/ic_pesa"
-            android:title="Entrenamientos" />
+            android:title="Coaching" />
         <item
             android:id="@+id/transformaciones"
             android:icon="@drawable/ic_transofrmaciones"
-            android:title="Transformaciones" />
+            android:title="Transformations" />
         <item
             android:id="@+id/contacto"
             android:icon="@drawable/ic_contacto"
-            android:title="Contacto" />
+            android:title="Contact" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
     </group>
 
 </menu>

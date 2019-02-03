@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Color color;
     private TextView email, name;
-    private FloatingActionButton fab;
     private static final String TAG = "FireBaseDavid";
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListner;
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment1).commit();
 
-        fab = findViewById(R.id.exit);
+
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListner = new FirebaseAuth.AuthStateListener() {
@@ -69,12 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-            }
-        });
+
 
         final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         final NavigationView navView = (NavigationView) findViewById(R.id.navview);
@@ -116,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction = true;
                         toolbar.setTitle(menuItem.getTitle());
                         break;
-                    case R.id.entrenamientos:
+                    case R.id.coaching:
                         toolbar.setTitle(menuItem.getTitle());
                         fragment = new FragmentEntrenamientos();
                         fragmentTransaction = true;
@@ -131,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
                         toolbar.setTitle(menuItem.getTitle());
                         fragment = new ContactFragment();
                         fragmentTransaction = true;
+                        break;
+                    case R.id.logout:
+                        mAuth.signOut();
                         break;
 
                 }

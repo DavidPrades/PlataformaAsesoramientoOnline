@@ -93,7 +93,7 @@ public class SingIn extends AppCompatActivity {
             }
         });
 
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
 
     }
 
@@ -122,6 +122,8 @@ public class SingIn extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                Intent i1 = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(i1);
                                 finish();
                             } else {
 
