@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,9 +49,11 @@ public class SingUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singup);
+        FirebaseApp.initializeApp(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(color.RED);
         }
+
 
         mAuth = FirebaseAuth.getInstance();
         email_id = (EditText) findViewById(R.id.input_email);
@@ -99,13 +102,7 @@ public class SingUp extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Enter Name", Toast.LENGTH_SHORT).show();
             return;
         }
-        Intent i1 = new Intent(this, MainActivity.class);
-        Intent i2 = new Intent(this, SingIn.class);
-        i1.putExtra("Name", name);
-        i2.putExtra("Name",name);
-        //i.putExtra("Email", email);
-        startActivity(i1);
-        startActivity(i2);
+
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Enter Password", Toast.LENGTH_SHORT).show();
             return;
@@ -170,8 +167,6 @@ public class SingUp extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-
             startActivityForResult(pickPhoto , SELECT_PHOTO);
         }else{
             Toast.makeText(SingUp.this, "You don't have permission", Toast.LENGTH_SHORT).show();

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,14 +40,16 @@ public class SingIn extends AppCompatActivity {
     private TextView email;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singin);
+        FirebaseApp.initializeApp(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(color.RED);
         }
+
+
 
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
@@ -58,7 +61,7 @@ public class SingIn extends AppCompatActivity {
         inputPassword = (EditText) findViewById(R.id.password);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        TextView btnSignIn = (TextView) findViewById(R.id.sign_in_button);
+       // TextView btnSignIn = (TextView) findViewById(R.id.sign_in_button);
         Button buttonSingUp = findViewById(R.id.buttonSingUp);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
@@ -72,15 +75,7 @@ public class SingIn extends AppCompatActivity {
             }
         });
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String value = extras.getString("Name");
-            Toast.makeText(getApplicationContext(), ""+value, Toast.LENGTH_SHORT).show();
-            Intent i1 = new Intent(this, MainActivity.class);
-            i1.putExtra("Name1",value);
-            Toast.makeText(getApplicationContext(), "Enviado", Toast.LENGTH_SHORT).show();
-            startActivity(i1);
-        }
+
 
 
 

@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        FirebaseApp.initializeApp(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(color.RED);
         }
+
+
         Fragment fragment1= new FragmentSobreMi();
 
         setSupportActionBar(toolbar);

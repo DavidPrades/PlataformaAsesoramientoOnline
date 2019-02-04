@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PerfilActivity">
+
+
+    <EditText
+        android:id="@+id/editTextNamePerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Name, last name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextEmailPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/editTextAgePerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="age"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextHeightPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="height (cm)"
+        android:inputType="numberSigned" />
+
+    <EditText
+        android:id="@+id/editTextWeightPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="weight(kg)"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextobservationPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="253dp"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="observation"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SEND" />
+
+</LinearLayout>
