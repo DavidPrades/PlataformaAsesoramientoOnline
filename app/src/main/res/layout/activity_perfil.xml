@@ -23,6 +23,12 @@
         android:hint="email"
         android:inputType="textEmailAddress" />
 
+    <TextView
+        android:id="@+id/textViewCompra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Compra: " />
+
     <EditText
         android:id="@+id/editTextAgePerfil"
         android:layout_width="match_parent"

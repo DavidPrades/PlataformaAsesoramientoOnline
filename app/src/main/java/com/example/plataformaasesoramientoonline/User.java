@@ -4,6 +4,7 @@ public class User {
 
     private String name;
     private String email;
+    private String compra;
     private int age;
     private double cm;
     private double peso;
@@ -12,9 +13,10 @@ public class User {
     public User(){
 
     }
-    public User(String name, String email, int age, double height, double weight, String comentarios) {
+    public User(String name, String email,String compra, int age, double height, double weight, String comentarios) {
         this.name = name;
         this.email = email;
+        this.compra=compra;
         this.age = age;
         this.cm = height;
         this.peso = weight;
@@ -67,5 +69,12 @@ public class User {
 
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
+    }
+    public String getCompra() {
+        return compra;
+    }
+
+    public void setCompra(String compra) {
+        this.compra = compra;
     }
 }
