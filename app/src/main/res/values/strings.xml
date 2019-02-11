@@ -3,12 +3,15 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="titulo">The Titan</string>
-    <string name="introduccion"> <b>Una vida dedicada al deporte</b> que no puedo contemplar de otra manera, <b>nuestro cuerpo</b> es lo único que tendremos hasta el último día, <b>debemos cuidarlo</b>. Esto va mucho más lejos, no se trata solo de entrenar y tener experiencia, si no de tratar de comprender que sucede en nuestro cuerpo <b>para saber cómo planificar un entrenamiento.</b></string>
-    <string name="titulo2">Mis logros</string>
-    <string name="logros">Para ello estudié la carrera en <b>Ciencias de la Actividad Física y el Deporte</b>durante 4 años y también me formé por <b>NSCA-CPT</b> como entrenador personal.  Siempre fui muy competitivo. En 2017 <b><font color="red">decidí competir en men’s physique</font></b> junior consiguiendo un <b>primer puesto en IFBB interterritorial y segundo en el campeonato regional</b> de la Región de Murcia. En 2018 he competido en mi primer internacional.  Ahora pretendo <b><font color="red">ayudar al máximo numero de personas, a conseguir su sueño de lograr un mejor físico</font></b> con estos planes tras años de estudio y experiencia, ya que las asesorías personales están completas y quiero seguir ayudandos.</string>
+    <string name="introduccion"> <b> A life dedicated to sport </b> that I can not contemplate in another way, <b> our body </b> is the only thing we will have until the last day, <b> we should take care of it </b>. This goes much further, it is not just about training and having experience, but about trying to understand what happens in our body <b> to know how to plan a workout.</b></string>
+    <string name="titulo2">My achievements</string>
+    <string name="logros">For this I studied the career in <b> Sciences of Physical Activity and Sports </b> for 4 years and I also trained as <b> NSCA-CPT </b> as a personal trainer. I was always very competitive. In 2017 <b><font color="red">I decided to compete in men\'s physique</font></b> junior getting a <b> first place in interterritorial IFBB and second in the regional championship </b> of the Region of Murcia. In 2018 I competed in my first international. Now I intend <b><font color="red"> to help the maximum number of people, to achieve their dream of achieving a better physical </font></b> with these plans after years of study and experience, since the Personal consultancies are complete and I want to continue helping.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="principiante">PRINCIPIANTE</string>
-    <string name="rutinasprincipiantes">Rutina <b>4 días de entrenamiento</b> \n <b>6 weeks program Rutina </b> \n 5 días de entrenamiento Rutina \n 6 días de entrenamiento</string>
+    <string name="principiante">BEGGINER</string>
+    <string name="rutinasprincipiantes"> Routine <b>4 days of training</b> \n <b>6 weeks program Routine </b> \n 5 days of Routine training \n 6 days of training</string>
+    <string name="rutinasintermedios"> Routine <b>5 days of training</b> \n <b>6 weeks program Rutina </b> \n 4 days of Routine training \n 6 days of training</string>
+    <string name="rutinasavanzados"> Routine <b>6 days of training</b> \n <b>6 weeks program Rutina </b> \n 4 days of Routine training \n 6 days of training</string>
+    <string name="rutinastotalpack"> Routine <b>4 days of training</b> \n <b>5 weeks program Rutina </b> \n 6 days of Routine training \n 24 weeks program \n <b>Spirit ONLY TITANS</b></string>
 </resources>

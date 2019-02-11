@@ -2,8 +2,10 @@ package com.example.plataformaasesoramientoonline;
 
 import android.graphics.Color;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,12 +28,14 @@ public class PerfilActivity extends AppCompatActivity {
     private Button buttonSendInformation;
     private Color color;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(color.RED);
+            getWindow().setStatusBarColor(getColor(R.color.colorAccent));
         }
 
 
@@ -43,13 +47,10 @@ public class PerfilActivity extends AppCompatActivity {
         weight = findViewById(R.id.editTextWeightPerfil);
         observation = findViewById(R.id.editTextobservationPerfil);
 
-
         database = FirebaseDatabase.getInstance();
         usuarios = database.getReference("usuariosPlataformaOnline");
 
-
         buttonSendInformation = findViewById(R.id.buttonSend);
-
 
         parametros = getIntent().getExtras();
         String datos = parametros.getString("compra");
@@ -67,10 +68,9 @@ public class PerfilActivity extends AppCompatActivity {
                 double weightFinal =Double.parseDouble(weight.getText().toString());
                 String descriptionFinal = observation.getText().toString();
 
-               User user = new User(""+nameFinal,""+emailFinal,""+textViewFinal,ageFinal,heightFinal,weightFinal,""+descriptionFinal);
+                User user = new User(""+nameFinal,""+emailFinal,""+textViewFinal,ageFinal,heightFinal,weightFinal,""+descriptionFinal);
 
                 usuarios.child(""+nameFinal).setValue(user);
-
 
                 Toast.makeText(PerfilActivity.this, "Registered user successfully", Toast.LENGTH_SHORT).show();
             }

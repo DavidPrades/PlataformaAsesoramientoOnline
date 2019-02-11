@@ -43,10 +43,10 @@ public class EntrenamientosAdapter extends  RecyclerView.Adapter<EntrenamientosA
 
         }
 
-        public void bindTitular(Image t) {
-            titulo.setText(titulo.getText().toString());
-            precio.setText(precio.getText().toString());
-            descripcion.setText(descripcion.getText().toString());
+        public void bindTitular(Entrenamientos t) {
+            titulo.setText(t.getTitulo());
+            precio.setText(t.getPrecio());
+            descripcion.setText(t.getDescription());
             comprar.setText("COMPRA YA!");
 
         }
@@ -55,7 +55,7 @@ public class EntrenamientosAdapter extends  RecyclerView.Adapter<EntrenamientosA
 
     @Override
     public TarjViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item_entrenamientos, viewGroup, false);
         itemView.setOnClickListener(this);
         TarjViewHolder tvh = new TarjViewHolder(itemView);
         return tvh;
@@ -63,7 +63,8 @@ public class EntrenamientosAdapter extends  RecyclerView.Adapter<EntrenamientosA
 
     @Override
     public void onBindViewHolder(@NonNull TarjViewHolder tarjViewHolder, int i) {
-
+        Entrenamientos item = items.get(i);
+        tarjViewHolder.bindTitular(item);
     }
 
 

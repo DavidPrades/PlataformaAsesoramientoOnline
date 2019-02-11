@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+
+        <objectAnimator
+            android:propertyName="translationZ"
+            android:valueFrom="10"
+            android:valueTo="20">
+
+        </objectAnimator>
+    </item>
+    <item>
+        <objectAnimator
+            android:propertyName="translationZ"
+            android:valueFrom="20"
+            android:valueTo="10">
+
+        </objectAnimator>
+
+    </item>
+
+</selector>

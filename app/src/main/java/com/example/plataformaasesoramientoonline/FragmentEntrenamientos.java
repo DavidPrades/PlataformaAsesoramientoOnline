@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,7 +29,8 @@ public class FragmentEntrenamientos extends Fragment {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    private Button principiante, intermedio, avanzado, totalPack;
+    private Button comprar;
+
 
     public FragmentEntrenamientos() {
         // Required empty public constructor
@@ -43,16 +45,45 @@ public class FragmentEntrenamientos extends Fragment {
 
         final ArrayList<Entrenamientos> items = new ArrayList<Entrenamientos>();
 
-          items.add(new Entrenamientos("PRINCIPIANTES","24,99","XD"));
-        items.add(new Entrenamientos("INTERMEDIOS","24,99","XD"));
+          items.add(new Entrenamientos("BEGINNERS","24,99€",getString(R.string.rutinasprincipiantes)));
+          items.add(new Entrenamientos("INTERMEDIOS","24,99€",getString(R.string.rutinasintermedios)));
+          items.add(new Entrenamientos("INTERMEDIATES","24,99€",getString(R.string.rutinasavanzados)));
+          items.add(new Entrenamientos("TOTAL PACK","49,90€",getString(R.string.rutinastotalpack)));
 
-        final RecyclerView recView = (RecyclerView) rootView.findViewById(R.id.recyclerView2);
-//        recView.setItemAnimator(new DefaultItemAnimator());
 
-        EntrenamientosAdapter adaptador = new EntrenamientosAdapter(items);
+
+        final RecyclerView recView = rootView.findViewById(R.id.recyclerView2);
+        recView.setHasFixedSize(true);
+        EntrenamientosAdapter tarjetaAdapter = new EntrenamientosAdapter(items);
+        recView.setAdapter(tarjetaAdapter);
+        recView.setItemAnimator(new DefaultItemAnimator());
+
+        registerForContextMenu(recView);
+
+        final EntrenamientosAdapter adaptador = new EntrenamientosAdapter(items);
         recView.setAdapter(adaptador);
-        recView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
+        recView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        registerForContextMenu(recView);
 
+
+
+
+
+        adaptador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Entrenamientos i = items.get(recView.getChildAdapterPosition(v));
+
+                int itemPosition = recView.getChildAdapterPosition(v);
+
+                Intent intent = new Intent(getContext(), PerfilActivity.class);
+                String compra = i.getTitulo();
+                adaptador.getItemViewPosition(itemPosition);
+                intent.putExtra("compra",compra);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -67,40 +98,10 @@ public class FragmentEntrenamientos extends Fragment {
 
 
     }
-/*
-    @Override
-    public void onClick(View v) {
 
 
-        switch (v.getId()){
-            case R.id.principiante:
-                Intent intent = new Intent(getContext(), PerfilActivity.class);
-                String compra =principiante.getText().toString();
-                intent.putExtra("compra",compra);
-                startActivity(intent);
-                break;
-            case R.id.intermedio:
-                Intent intent2 = new Intent(getContext(), PerfilActivity.class);
-                String compra2 =intermedio.getText().toString();
-                intent2.putExtra("compra",compra2);
-                startActivity(intent2);
-                break;
-            case R.id.avanzado:
-                Intent intent3 = new Intent(getContext(), PerfilActivity.class);
-                String compra3 =avanzado.getText().toString();
-                intent3.putExtra("compra",compra3);
-                startActivity(intent3);
-                break;
-            case R.id.totalPack:
-                Intent intent4 = new Intent(getContext(), PerfilActivity.class);
-                String compra4 =totalPack.getText().toString();
-                intent4.putExtra("compra",compra4);
-                startActivity(intent4);
-                break;
-        }
 
-    }
-    */
+
 
 
 }

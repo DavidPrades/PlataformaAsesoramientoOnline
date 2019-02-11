@@ -51,7 +51,7 @@ public class SingUp extends AppCompatActivity {
         setContentView(R.layout.activity_singup);
         FirebaseApp.initializeApp(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(color.RED);
+            getWindow().setStatusBarColor(getColor(R.color.colorAccent));
         }
 
 
