@@ -16,10 +16,10 @@ import java.util.ArrayList;
 
 public class EntrenamientosAdapter extends  RecyclerView.Adapter<EntrenamientosAdapter.TarjViewHolder> implements View.OnClickListener{
 
-    private static ArrayList<Image> items;
+    private static ArrayList<Entrenamientos> items;
     private View.OnClickListener listener;
 
-    public EntrenamientosAdapter(ArrayList<Image> items) {
+    public EntrenamientosAdapter(ArrayList<Entrenamientos> items) {
         this.items = items;
     }
 
@@ -29,40 +29,28 @@ public class EntrenamientosAdapter extends  RecyclerView.Adapter<EntrenamientosA
         private TextView titulo;
         private TextView precio;
         private TextView descripcion;
-        private Button button;
+        private Button comprar;
+
 
 
         public TarjViewHolder(View itemView) {
             super(itemView);
 
-            titulo = (TextView) itemView.findViewById(R.id.idNombre);
-            precio= (TextView) itemView.findViewById(R.id.textViewSitio);
-            descripcion  = (TextView) itemView.findViewById(R.id.textViewPunt);
-            
-            ratingBar = (RatingBar) itemView.findViewById(R.id.ratingBar);
+            titulo = (TextView) itemView.findViewById(R.id.titulo);
+            precio= (TextView) itemView.findViewById(R.id.precio);
+            descripcion  = (TextView) itemView.findViewById(R.id.descripcion);
+            comprar = itemView.findViewById(R.id.comprar);
 
-            ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-                @Override
-                public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-
-                    puntuacion.setText(""+rating);
-                }
-            });
         }
 
         public void bindTitular(Image t) {
+            titulo.setText(titulo.getText().toString());
+            precio.setText(precio.getText().toString());
+            descripcion.setText(descripcion.getText().toString());
+            comprar.setText("COMPRA YA!");
 
-            // Ara és un byte[] no un int
-            byte [] img = t.getImage();
-            Bitmap imgBmp = BitmapFactory.decodeByteArray(img,0,img.length);
-            image.setImageBitmap(imgBmp);
-            idNombre.setText(t.getNombre());
-            textView3.setText(t.getCalle());
-
-
-
-                }
         }
+    }
 
 
     @Override
@@ -74,11 +62,10 @@ public class EntrenamientosAdapter extends  RecyclerView.Adapter<EntrenamientosA
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ImageAdapter.TarjViewHolder tarjViewHolder, int i) {
-        Image item = items.get(i);
-        tarjViewHolder.bindTitular(item);
+    public void onBindViewHolder(@NonNull TarjViewHolder tarjViewHolder, int i) {
 
     }
+
 
     @Override
     public int getItemCount() {

@@ -18,10 +18,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ImageAdapter extends  RecyclerView.Adapter<ImageAdapter.TarjViewHolder> implements View.OnClickListener{
+public class ImageAdapter extends  RecyclerView.Adapter<ImageAdapter.TarjViewHolder>{
 
     private static ArrayList<Image> items;
-    private View.OnClickListener listener;
+
 
     public ImageAdapter(ArrayList<Image> items) {
         this.items = items;
@@ -35,44 +35,11 @@ public class ImageAdapter extends  RecyclerView.Adapter<ImageAdapter.TarjViewHol
 
         public TarjViewHolder(View itemView) {
             super(itemView);
-            itemView.setOnCreateContextMenuListener(this);
 
-            itemView.setOnLongClickListener(new AdapterView.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-
-                    ((AppCompatActivity)v.getContext()).startSupportActionMode(modeCallBack);
-
-                    return true;
-                }
-
-
-            });
             image = (ImageView) itemView.findViewById(R.id.idLogo);
 
         }
-        private ActionMode.Callback modeCallBack = new ActionMode.Callback() {
 
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-                return false;
-            }
-
-            public void onDestroyActionMode(ActionMode mode) {
-                mode = null;
-            }
-
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-
-                return true;
-            }
-
-
-        };
 
         public void bindTitular(Image t) {
             image.setImageResource(t.getTexto());
@@ -94,7 +61,6 @@ public class ImageAdapter extends  RecyclerView.Adapter<ImageAdapter.TarjViewHol
     @Override
     public TarjViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item, viewGroup, false);
-        itemView.setOnClickListener(this);
         TarjViewHolder tvh = new TarjViewHolder(itemView);
         return tvh;
     }
@@ -111,15 +77,6 @@ public class ImageAdapter extends  RecyclerView.Adapter<ImageAdapter.TarjViewHol
         return items.size();
     }
 
-    public void setOnClickListener(View.OnClickListener listener){
-        this.listener=listener;
-    }
-    @Override
-    public void onClick(View v) {
-        if (listener != null){
-            listener.onClick(v);
-        }
-    }
 
 
 }

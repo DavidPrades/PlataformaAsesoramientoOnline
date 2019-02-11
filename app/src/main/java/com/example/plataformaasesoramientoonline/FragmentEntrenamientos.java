@@ -5,19 +5,25 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+
+import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentEntrenamientos extends Fragment implements View.OnClickListener {
+public class FragmentEntrenamientos extends Fragment {
 
 
     private FirebaseAuth mAuth;
@@ -35,17 +41,21 @@ public class FragmentEntrenamientos extends Fragment implements View.OnClickList
 
         View rootView = inflater.inflate(R.layout.fragment_entrenamientos, container, false);
 
+        final ArrayList<Entrenamientos> items = new ArrayList<Entrenamientos>();
 
-        principiante= rootView.findViewById(R.id.principiante);
-        intermedio= rootView.findViewById(R.id.intermedio);
-        avanzado= rootView.findViewById(R.id.avanzado);
-        totalPack= rootView.findViewById(R.id.totalPack);
+          items.add(new Entrenamientos("PRINCIPIANTES","24,99","XD"));
+        items.add(new Entrenamientos("INTERMEDIOS","24,99","XD"));
+
+        final RecyclerView recView = (RecyclerView) rootView.findViewById(R.id.recyclerView2);
+//        recView.setItemAnimator(new DefaultItemAnimator());
+
+        EntrenamientosAdapter adaptador = new EntrenamientosAdapter(items);
+        recView.setAdapter(adaptador);
+        recView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
 
 
-        principiante.setOnClickListener(this);
-        intermedio.setOnClickListener(this);
-        avanzado.setOnClickListener(this);
-        totalPack.setOnClickListener(this);
+
+
         return rootView;
     }
 
@@ -57,7 +67,7 @@ public class FragmentEntrenamientos extends Fragment implements View.OnClickList
 
 
     }
-
+/*
     @Override
     public void onClick(View v) {
 
@@ -90,6 +100,7 @@ public class FragmentEntrenamientos extends Fragment implements View.OnClickList
         }
 
     }
+    */
 
 
 }

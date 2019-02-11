@@ -75,11 +75,6 @@ public class SingIn extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
         buttonSingUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

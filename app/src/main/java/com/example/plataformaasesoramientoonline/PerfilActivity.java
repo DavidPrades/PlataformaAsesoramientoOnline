@@ -68,9 +68,7 @@ public class PerfilActivity extends AppCompatActivity {
                 String descriptionFinal = observation.getText().toString();
 
                User user = new User(""+nameFinal,""+emailFinal,""+textViewFinal,ageFinal,heightFinal,weightFinal,""+descriptionFinal);
-                //User usuarioPrueba = new User("Prueba 1", "prueba@gmail.com", 22, 170, 70, "Probando nuevo usuario");
 
-                //String clau = usuarios.push().getKey();
                 usuarios.child(""+nameFinal).setValue(user);
 
 
