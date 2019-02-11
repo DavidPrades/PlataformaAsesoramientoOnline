@@ -1,16 +1,20 @@
 package com.example.plataformaasesoramientoonline;
 
 import android.Manifest;
-import android.app.AlertDialog;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -29,6 +33,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,8 +49,13 @@ public class SingUp extends AppCompatActivity {
     Button ahsignup;
     private Color color;
     private ImageView imageSeleccion;
+    private String picturePath;
+
+    private Uri filePath;
+    private final int PICK_IMAGE_REQUEST = 71;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +95,7 @@ public class SingUp extends AppCompatActivity {
         btnSelectImagen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectImage();
+              selectImage();
             }
         });
     }
@@ -151,7 +162,9 @@ public class SingUp extends AppCompatActivity {
                     // Toast.makeText(this, "Imagen seleccionada con exito", Toast.LENGTH_SHORT).show();
                     selectImage();
                 } else {
-
+                    Dialog d = new AlertDialog.Builder(SingUp.this).setTitle("Error").
+                            setMessage("I need permission to read external storage").create();
+                    d.show();
 
                 }
                 return;
@@ -162,14 +175,30 @@ public class SingUp extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if (requestCode == 1){
+            if(resultCode == Activity.RESULT_OK){
+                picturePath = data.getStringExtra("picturePath");
+                File f = new File(picturePath);
+                Uri contentUri = Uri.fromFile(f);
+
+
+            }else{
+                finish();
+            }
+        }
+    }
+
     public void selectImage(){
 
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(pickPhoto , SELECT_PHOTO);
+          selectPhoto();
         }else{
-            Toast.makeText(SingUp.this, "You don't have permission", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(SingUp.this, "You don't have permission", Toast.LENGTH_SHORT).show();
             ActivityCompat.requestPermissions(SingUp.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     SELECT_PHOTO);
         }
@@ -178,7 +207,19 @@ public class SingUp extends AppCompatActivity {
 
 
 
+        public void selectPhoto(){
+            Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+
+            startActivityForResult(pickPhoto , SELECT_PHOTO);
+
+    }
+
+
+    }
 
 
 
-}
+
+
+

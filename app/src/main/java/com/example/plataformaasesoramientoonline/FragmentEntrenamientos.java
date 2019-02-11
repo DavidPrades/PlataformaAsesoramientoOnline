@@ -74,9 +74,7 @@ public class FragmentEntrenamientos extends Fragment {
             public void onClick(View v) {
 
                 Entrenamientos i = items.get(recView.getChildAdapterPosition(v));
-
                 int itemPosition = recView.getChildAdapterPosition(v);
-
                 Intent intent = new Intent(getContext(), PerfilActivity.class);
                 String compra = i.getTitulo();
                 adaptador.getItemViewPosition(itemPosition);
@@ -98,10 +96,6 @@ public class FragmentEntrenamientos extends Fragment {
 
 
     }
-
-
-
-
 
 
 }
