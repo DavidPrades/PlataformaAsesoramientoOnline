@@ -29,7 +29,7 @@ public class EntrenamientosAdapter extends  RecyclerView.Adapter<EntrenamientosA
         private TextView titulo;
         private TextView precio;
         private TextView descripcion;
-        private Button comprar;
+        private TextView comprar;
 
 
 

@@ -39,6 +39,7 @@ public class SingIn extends AppCompatActivity {
     FirebaseAuth.AuthStateListener mAuthListner;
     private TextView name;
     private TextView email;
+    private Button buttonSTRIPE;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -50,7 +51,6 @@ public class SingIn extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getColor(R.color.colorAccent));
         }
-
 
 
         mAuth = FirebaseAuth.getInstance();

@@ -43,17 +43,18 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"
+
                 android:lineSpacingExtra="10dp"
                 android:textSize="24sp" />
 
-            <Button
+            <TextView
                 android:id="@+id/comprar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-
                 android:background="@color/colorPrimary"
-                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+                android:textSize="24sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"/>
         </LinearLayout>
 
 
