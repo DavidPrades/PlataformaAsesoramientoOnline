@@ -26,12 +26,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,11 +52,14 @@ public class SingUp extends AppCompatActivity {
     private static final String TAG = "";
     private ProgressBar progressBar;
     private Button btnSelectImagen;
-    Button ahsignup;
-    private Color color;
+    private Button ahsignup;
+
     private ImageView imageSeleccion;
     private String picturePath;
+    FirebaseDatabase database;
 
+    DatabaseReference usuarios;
+    Bundle parametros;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71;
 
@@ -71,12 +80,12 @@ public class SingUp extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         passwordcheck = (EditText) findViewById(R.id.input_password);
         ahsignup = (Button) findViewById(R.id.btn_signup);
-        name_id= (EditText) findViewById(R.id.input_name);
-        TextView btnSignUp = (TextView) findViewById(R.id.login_page);
+        name_id = (EditText) findViewById(R.id.input_name);
+        TextView txVSignUp = (TextView) findViewById(R.id.login_page);
         btnSelectImagen = findViewById(R.id.selectImage);
 
-        imageSeleccion= null;
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        imageSeleccion = null;
+        txVSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SingUp.this, SingIn.class);
@@ -88,22 +97,22 @@ public class SingUp extends AppCompatActivity {
         ahsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                singUp2();
+                singUp();
             }
         });
 
         btnSelectImagen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              selectImage();
+                selectImage();
             }
         });
     }
 
-    private void singUp2() {
-        String email = email_id.getText().toString();
+    private void singUp() {
+        final String email = email_id.getText().toString();
         String password = passwordcheck.getText().toString();
-        String name = name_id.getText().toString();
+        final String name = name_id.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Enter Eamil Id", Toast.LENGTH_SHORT).show();
@@ -131,6 +140,27 @@ public class SingUp extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(SingUp.this, SingIn.class);
                             startActivity(intent);
+                            database = FirebaseDatabase.getInstance();
+
+                            usuarios = database.getReference("usuariosPlataformaOnline");
+
+                            database.getReference("UsuariosRegistrados").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                    if (!dataSnapshot.exists()) {
+
+                                        database.getReference("UsuariosRegistrados").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                        database.getReference("UsuariosRegistrados/"+FirebaseAuth.getInstance().getCurrentUser().getUid()).child("/name").setValue("" + name);
+                                        database.getReference("UsuariosRegistrados/"+FirebaseAuth.getInstance().getCurrentUser().getUid()).child("/email").setValue("" + email);
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
                             finish();
                         } else {
                             // If sign in fails, display a message to the user.
@@ -140,6 +170,8 @@ public class SingUp extends AppCompatActivity {
                         }
                     }
                 });
+
+
 
     }
 
@@ -177,46 +209,43 @@ public class SingUp extends AppCompatActivity {
 
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if (requestCode == 1){
-            if(resultCode == Activity.RESULT_OK){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
                 picturePath = data.getStringExtra("picturePath");
                 File f = new File(picturePath);
                 Uri contentUri = Uri.fromFile(f);
 
 
-            }else{
+            } else {
                 finish();
             }
         }
     }
 
-    public void selectImage(){
+    public void selectImage() {
 
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-          selectPhoto();
-        }else{
+            selectPhoto();
+        } else {
             //Toast.makeText(SingUp.this, "You don't have permission", Toast.LENGTH_SHORT).show();
-            ActivityCompat.requestPermissions(SingUp.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
+            ActivityCompat.requestPermissions(SingUp.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     SELECT_PHOTO);
         }
 
     }
 
 
-
-        public void selectPhoto(){
-            Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-
-            startActivityForResult(pickPhoto , SELECT_PHOTO);
+    public void selectPhoto() {
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickPhoto, SELECT_PHOTO);
 
     }
 
 
-    }
+}
 
 
 

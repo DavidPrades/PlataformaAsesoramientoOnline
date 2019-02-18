@@ -7,8 +7,7 @@
         <item
             android:id="@+id/sobreMi"
             android:icon="@drawable/ic_person"
-            android:title="About me"
-            />
+            android:title="About me" />
         <item
             android:id="@+id/coaching"
             android:icon="@drawable/ic_pesa"
@@ -21,10 +20,15 @@
             android:id="@+id/contacto"
             android:icon="@drawable/ic_contacto"
             android:title="Contact" />
+    </group>
+
+
+
         <item
             android:id="@+id/logout"
             android:icon="@drawable/logout"
             android:title="Logout" />
-    </group>
+
+
 
 </menu>

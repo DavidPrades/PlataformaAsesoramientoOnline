@@ -11,13 +11,13 @@
 
     <ImageView
         android:id="@+id/imageViewHeader"
-        android:paddingTop="16dp"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:paddingBottom="8dp"
         android:adjustViewBounds="true"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
         android:scaleType="centerInside"
-        app:srcCompat="@drawable/tytyy" />
+        app:srcCompat="@mipmap/face" />
 
 
     <TextView

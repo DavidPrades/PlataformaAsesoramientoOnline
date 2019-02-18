@@ -76,7 +76,11 @@
 
 
         <!-- Link to Login Screen -->
-
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/buttonGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sing In" />
 
         <TextView
             android:id="@+id/editTextSingUp"

@@ -57,7 +57,6 @@ public class PerfilActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         usuarios = database.getReference("usuariosPlataformaOnline");
 
-
         database.getReference("informes").orderByChild("receptor_uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -88,6 +87,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         buttonSendInformation = findViewById(R.id.buttonSend);
 
+
         parametros = getIntent().getExtras();
         String datos = parametros.getString("compra");
         compra.setText(compra.getText() + " " + datos);
@@ -99,8 +99,8 @@ public class PerfilActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Enter Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String nameFinal = name.getText().toString();
 
+                String nameFinal = name.getText().toString();
                 if (TextUtils.isEmpty(email.getText())) {
                     Toast.makeText(getApplicationContext(), "Enter Email", Toast.LENGTH_SHORT).show();
                     return;
@@ -132,8 +132,7 @@ public class PerfilActivity extends AppCompatActivity {
 
                 User user = new User("" + nameFinal, "" + emailFinal, "" + textViewFinal, ageFinal, heightFinal, weightFinal, "" + descriptionFinal);
 
-                usuarios.child("" + nameFinal).setValue(user);
-
+                usuarios.child(""+ nameFinal).setValue(user);
                 Toast.makeText(PerfilActivity.this, "Registered user successfully", Toast.LENGTH_SHORT).show();
             }
         });
