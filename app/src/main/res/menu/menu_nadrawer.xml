@@ -11,15 +11,15 @@
         <item
             android:id="@+id/coaching"
             android:icon="@drawable/ic_pesa"
-            android:title="Coaching" />
+            android:title="Entrenamiento" />
         <item
             android:id="@+id/transformaciones"
             android:icon="@drawable/ic_transofrmaciones"
-            android:title="Transformations" />
+            android:title="Transformaciones" />
         <item
             android:id="@+id/contacto"
             android:icon="@drawable/ic_contacto"
-            android:title="Contact" />
+            android:title="Contacto" />
     </group>
 
 
@@ -27,7 +27,7 @@
         <item
             android:id="@+id/logout"
             android:icon="@drawable/logout"
-            android:title="Logout" />
+            android:title="Cerrar Sesión" />
 
 
 

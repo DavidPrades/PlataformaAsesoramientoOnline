@@ -22,13 +22,14 @@
         android:layout_height="match_parent"
         android:layout_margin="16dp"
         android:orientation="vertical">
-    <EditText
-        android:id="@+id/editTextNamePerfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Name, last name"
-        android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editTextNamePerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombre y apellidos"
+            android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editTextEmailPerfil"
@@ -44,38 +45,38 @@
         android:layout_height="wrap_content"
         android:text="Compra: " />
 
-    <EditText
-        android:id="@+id/editTextAgePerfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="age"
-        android:inputType="number" />
+        <EditText
+            android:id="@+id/editTextAgePerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="edad"
+            android:inputType="number" />
 
-    <EditText
-        android:id="@+id/editTextHeightPerfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="height (cm)"
-        android:inputType="numberSigned" />
+        <EditText
+            android:id="@+id/editTextHeightPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="altura(cm)"
+            android:inputType="numberSigned" />
 
-    <EditText
-        android:id="@+id/editTextWeightPerfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="weight(kg)"
-        android:inputType="numberDecimal" />
+        <EditText
+            android:id="@+id/editTextWeightPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="kilos(kg)"
+            android:inputType="numberDecimal" />
 
-    <EditText
-        android:id="@+id/editTextobservationPerfil"
-        android:layout_width="match_parent"
-        android:layout_height="253dp"
-        android:ems="10"
-        android:gravity="top"
-        android:hint="observation"
-        android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/editTextobservationPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="253dp"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="detalles"
+            android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/buttonSend"

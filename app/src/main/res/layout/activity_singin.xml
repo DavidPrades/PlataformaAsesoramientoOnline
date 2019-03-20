@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusableInTouchMode="true"
-                android:hint="password"
+                android:hint="contraseña"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorAccent"
-            android:text="Sing In"
+            android:text="Iniciar Sesión"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
@@ -89,7 +89,7 @@
             android:layout_marginTop="20dip"
             android:background="@null"
             android:gravity="center"
-            android:text="Create a new count!"
+            android:text="Crear una nueva cuenta!"
             android:textAllCaps="false"
             android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorAccent"
-            android:text="Sing Up"
+            android:text="Registrarse"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
     </LinearLayout>
