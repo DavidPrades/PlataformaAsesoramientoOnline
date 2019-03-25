@@ -78,11 +78,11 @@
             android:hint="detalles"
             android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/buttonSend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SEND" />
+        <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enviar" />
     </LinearLayout>
 
 </LinearLayout>
