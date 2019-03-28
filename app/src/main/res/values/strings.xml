@@ -14,4 +14,5 @@
     <string name="rutinasintermedios"> Rutina <b>5 días de entrenamiento</b> \n <b>6 de seguimiento </b> \n 4 días de rutina de entrenmiento \n 6 días de rutina de entrenmiento</string>
     <string name="rutinasavanzados"> Rutina <b>6 días de entrenamiento</b> \n <b>6 de seguimiento </b> \n 4 días de rutina de entrenmiento \n 6 días de rutina de entrenmiento</string>
     <string name="rutinastotalpack"> Rutina <b>4 días de entrenamiento</b> \n <b>5 de seguimiento </b> \n 6 días de rutina de entrenmiento \n 24 semanas de seguimiento \n <b>Spíritu ONLY TITANS</b></string>
+    <string name="iniciaSesion"> Ya eres miembro? <font color="red">Inicia Sesión </font> </string>
 </resources>

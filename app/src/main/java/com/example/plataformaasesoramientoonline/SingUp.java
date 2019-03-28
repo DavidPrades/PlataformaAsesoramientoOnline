@@ -246,9 +246,3 @@ public class SingUp extends AppCompatActivity {
 
 
 }
-
-
-
-
-
-

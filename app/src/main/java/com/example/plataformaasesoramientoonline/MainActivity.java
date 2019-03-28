@@ -38,7 +38,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Color color;
     private TextView email, name;
     private static final String TAG = "FireBaseDavid";
     private FirebaseAuth mAuth;
@@ -67,23 +66,15 @@ public class MainActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(getColor(R.color.colorAccent));
         }
 
-
-
-
-
-        Fragment fragment1= new FragmentSobreMi();
-
+        Fragment fragment1 = new FragmentSobreMi();
         setSupportActionBar(toolbar);
-
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment1).commit();
-
-
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListner = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser()==null) {
+                if (firebaseAuth.getCurrentUser() == null) {
                     startActivity(new Intent(MainActivity.this, SingIn.class));
                 }
             }
@@ -99,11 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
         View header = navView.getHeaderView(0);
 
-
-
-
-
-
         loadProfile();
         textViewNameHeader = header.findViewById(R.id.textViewNameHeader);
         textViewEmailHeader = header.findViewById(R.id.textViewEmailHeader);
@@ -112,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
         RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(this.getResources(), bm);
         drawable.setCircular(true);
         circular_avatar.setImageDrawable(drawable);
-
-
 
 
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -138,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.transformaciones:
                         toolbar.setTitle(menuItem.getTitle());
                         fragment = new FragmentTransformation();
-
                         fragmentTransaction = true;
                         break;
                     case R.id.contacto:
@@ -149,10 +132,15 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.logout:
                         mAuth.signOut();
                         break;
+                    case R.id.administrar:
+                        toolbar.setTitle(menuItem.getTitle());
+                        fragment = new FragmentAdministrar();
+                        fragmentTransaction = true;
+                        break;
 
                 }
 
-                if(fragmentTransaction) {
+                if (fragmentTransaction) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                     menuItem.setChecked(true);
                     getSupportActionBar().setTitle(menuItem.getTitle());
@@ -167,18 +155,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void loadProfile(){
+    public void loadProfile() {
 
-       database = FirebaseDatabase.getInstance();
-         usuarios = database.getReference("UsuariosRegistrados");
+        database = FirebaseDatabase.getInstance();
+        usuarios = database.getReference("UsuariosRegistrados");
 
         usuarios.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).exists()) {
-                    textViewNameHeader.setText(dataSnapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()+"/name").getValue(String.class));
-                    textViewEmailHeader.setText(dataSnapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()+"/email").getValue(String.class));
-                }else{
+                    textViewNameHeader.setText(dataSnapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/name").getValue(String.class));
+                    textViewEmailHeader.setText(dataSnapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/email").getValue(String.class));
+                } else {
                     //createUser
                 }
 
@@ -192,11 +180,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_toolbar, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

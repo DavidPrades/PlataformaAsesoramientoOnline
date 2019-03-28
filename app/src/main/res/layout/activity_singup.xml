@@ -107,9 +107,9 @@
             android:id="@+id/login_page"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginTop="63dp"
             android:gravity="center"
-            android:text="Ya eres miembro? Inicia Sesión"
+            android:text="@string/iniciaSesion"
             android:textColor="@color/textColor" />
 
     </LinearLayout>
