@@ -36,6 +36,7 @@ public class FragmentAdministrar extends Fragment {
 
         final ArrayList<Administrar> items = new ArrayList<Administrar>();
         items.add(new Administrar(R.drawable.tytyy, "David Prades"));
+        items.add(new Administrar(R.drawable.magnetosfera, "Emilio Gonzalez"));
 
 
         final RecyclerView recView = rootView.findViewById(R.id.recyclerViewAdmin);
@@ -58,11 +59,7 @@ public class FragmentAdministrar extends Fragment {
 
                 Administrar i = items.get(recView.getChildAdapterPosition(v));
 
-
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) getContext());
-
-
-
 
                 int itemPosition = recView.getChildAdapterPosition(v);
                 Intent intent = new Intent(getContext(), AdministrarUser.class);

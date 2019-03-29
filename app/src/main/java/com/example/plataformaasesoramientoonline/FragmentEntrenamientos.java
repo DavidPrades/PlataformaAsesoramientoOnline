@@ -45,9 +45,9 @@ public class FragmentEntrenamientos extends Fragment {
 
         final ArrayList<Entrenamientos> items = new ArrayList<Entrenamientos>();
 
-          items.add(new Entrenamientos("BEGINNERS","24,99€",getString(R.string.rutinasprincipiantes)));
+          items.add(new Entrenamientos("PRINCIPIANTES","24,99€",getString(R.string.rutinasprincipiantes)));
           items.add(new Entrenamientos("INTERMEDIOS","24,99€",getString(R.string.rutinasintermedios)));
-          items.add(new Entrenamientos("INTERMEDIATES","24,99€",getString(R.string.rutinasavanzados)));
+          items.add(new Entrenamientos("AVANZADOS","24,99€",getString(R.string.rutinasavanzados)));
           items.add(new Entrenamientos("TOTAL PACK","49,90€",getString(R.string.rutinastotalpack)));
 
 

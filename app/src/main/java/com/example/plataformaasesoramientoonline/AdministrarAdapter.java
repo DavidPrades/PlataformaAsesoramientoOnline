@@ -26,7 +26,6 @@ public class AdministrarAdapter extends  RecyclerView.Adapter<AdministrarAdapter
     }
 
 
-
     public class TarjViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
@@ -35,12 +34,12 @@ public class AdministrarAdapter extends  RecyclerView.Adapter<AdministrarAdapter
 
         public TarjViewHolder(View itemView) {
             super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.idLogo);
+            imageView = (ImageView) itemView.findViewById(R.id.idLogoAdmin);
             textView = (TextView) itemView.findViewById(R.id.textViewAdmin);
 
         }
-        public void bindTitular(Administrar t) {
 
+        public void bindTitular(Administrar t) {
 
             Bitmap bm = BitmapFactory.decodeResource(itemView.getContext().getResources(), t.getLogo());
             RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(itemView.getContext().getResources(), bm);
@@ -49,42 +48,36 @@ public class AdministrarAdapter extends  RecyclerView.Adapter<AdministrarAdapter
             textView.setText(t.getTexto());
 
         }
-
-
     }
 
-
-
-    @Override
-    public TarjViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item, viewGroup, false);
-        itemView.setOnClickListener(this);
-        TarjViewHolder tvh = new TarjViewHolder(itemView);
-        return tvh;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull AdministrarAdapter.TarjViewHolder tarjViewHolder, int i) {
-        Administrar item = items.get(i);
-        tarjViewHolder.bindTitular(item);
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return items.size();
-    }
-
-    public void setOnClickListener(View.OnClickListener listener){
-        this.listener=listener;
-    }
-    @Override
-    public void onClick(View v) {
-
-        if (listener != null){
-            listener.onClick(v);
+        @Override
+        public TarjViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+            View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_itemadministrar, viewGroup, false);
+            itemView.setOnClickListener(this);
+            TarjViewHolder tvh = new TarjViewHolder(itemView);
+            return tvh;
         }
-    }
 
+        @Override
+        public void onBindViewHolder(@NonNull AdministrarAdapter.TarjViewHolder tarjViewHolder, int i) {
+            Administrar item = items.get(i);
+            tarjViewHolder.bindTitular(item);
 
+        }
+
+        @Override
+        public int getItemCount() {
+            return items.size();
+        }
+
+        public void setOnClickListener(View.OnClickListener listener){
+            this.listener=listener;
+        }
+        @Override
+        public void onClick(View v) {
+
+            if (listener != null){
+                listener.onClick(v);
+            }
+        }
 }
