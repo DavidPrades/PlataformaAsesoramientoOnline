@@ -77,6 +77,11 @@
             android:gravity="top"
             android:hint="detalles"
             android:inputType="textPersonName" />
+        <Button
+            android:id="@+id/buttonSendImages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecciona 4 fotos" />
 
         <Button
             android:id="@+id/buttonSend"
