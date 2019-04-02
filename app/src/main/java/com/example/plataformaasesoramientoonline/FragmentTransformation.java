@@ -24,16 +24,16 @@ public class FragmentTransformation extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_transformaciones, container, false);
-        final ArrayList<Image> items = new ArrayList<>();
-        items.add(new Image(R.drawable.transfor1));
-        items.add(new Image(R.drawable.transfor2));
-        items.add(new Image(R.drawable.transfor3));
-        items.add(new Image(R.drawable.transfor4));
-        items.add(new Image(R.drawable.transfor5));
-        items.add(new Image(R.drawable.transfor6));
+            View rootView = inflater.inflate(R.layout.fragment_transformaciones, container, false);
+            final ArrayList<Image> items = new ArrayList<>();
+            items.add(new Image(R.drawable.transfor1));
+            items.add(new Image(R.drawable.transfor2));
+            items.add(new Image(R.drawable.transfor3));
+            items.add(new Image(R.drawable.transfor4));
+            items.add(new Image(R.drawable.transfor5));
+            items.add(new Image(R.drawable.transfor6));
 
 
         final RecyclerView recView = (RecyclerView) rootView.findViewById((R.id.recyclerView));
