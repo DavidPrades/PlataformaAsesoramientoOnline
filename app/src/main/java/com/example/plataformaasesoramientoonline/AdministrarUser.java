@@ -44,11 +44,7 @@ public class AdministrarUser extends AppCompatActivity {
         textView1 = findViewById(R.id.textViewAdminUser);
         //textView2 = findViewById(R.id.textViewTexto);
 
-        textView1.setText("Compra: PRINCIPIANTES \n" +
-                "Edad: 22\n" +
-                "Cm: 170 \n" +
-                "Kg: 66 \n" +
-                "Comentarios: hdhzj");
+        textView1.setText("Compra: PRINCIPIANTES\nEdad: 22\nCm: 170\nKg: 66\nComentarios: hdhzj");
 
 
         if (getIntent().getExtras() != null){
@@ -73,50 +69,6 @@ public class AdministrarUser extends AppCompatActivity {
             }
         });
 
-
-
     }
-
-  /*  @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case 1212:
-                if (resultCode == RESULT_OK) {
-                    // Get the Uri of the selected file
-                    Uri uri = data.getData();
-                    String uriString = uri.toString();
-                    File myFile = new File(uriString);
-                    String path = myFile.getAbsolutePath();
-                    String displayName = null;
-
-                    if (uriString.startsWith("content://")) {
-                        Cursor cursor = null;
-                        try {
-                            cursor = getApplicationContext().getContentResolver().query(uri, null, null, null, null);
-                            if (cursor != null && cursor.moveToFirst()) {
-                                displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-                            }
-                        } finally {
-                            cursor.close();
-                        }
-                    } else if (uriString.startsWith("file://")) {
-                        displayName = myFile.getName();
-                    }
-                }
-                break;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-
-    }
-    */
-
-  /*  private void openPFD() {
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/Entrenamiento.pdf");
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file), "application/pdf");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivity(intent);
-    } */
-
 
 }
